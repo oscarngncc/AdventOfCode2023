@@ -20,7 +20,7 @@ locals {
   //
   // To handle this, we abuse a couple English facts that:
   // (1): There's at max one letter at the end of digit that matches the start of other digit, (i.e. an imaginery english digit letter 'eni' will break this assumption since the 2-letter sequence end 'ni' matches the start of 'nine' )
-  // (2): There's at max one letter at the start of digit that matches the end of other digit, (i.e. an imaginery english digit letter 'hti' will break this assumption since the 2-letter sequence end 'ht' matches the start of 'eight')
+  // (2): There's at max one letter at the start of digit that matches the end of other digit, (i.e. an imaginery english digit letter 'hti' will break this assumption since the 2-letter sequence start 'ht' matches the end of 'eight')
   // (3): All english digit letters are at least 3 letters long
   calibration_letter_digits_per_line = [
     for cline in local.calibrations_per_line :

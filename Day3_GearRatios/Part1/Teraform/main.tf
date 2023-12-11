@@ -2,17 +2,7 @@
 variable "engine_schematic" {
   description = "The plain text string of the engine_schematic. If provided, will proritize this instead"
   type        = string
-  default     = <<EOF
-....11
-......
-....22
-33+...
-......
-44+.44
-......
-+55.55
-.....+
-EOF
+  default     = null
 }
 
 variable "engine_schematic_path" {
@@ -25,13 +15,17 @@ locals {
   rows = compact(split("\n", var.engine_schematic != null ? var.engine_schematic : file(var.engine_schematic_path)))
   coordinates = [for row in local.rows : [for unit in split("", row) : unit]]
 
-  numbers = flatten([for y, row in local.rows : [
-    for num in regexall("[0-9]+", row) : {
-      value = tonumber(num)
-      x     = length(split(num, row)[0])  //INCORRECTT
-      y     = y
-    }
-  ]])
+  numbers = flatten([
+    for y, row in local.rows : distinct(flatten([
+      for num in regexall("[0-9]+", row) : [
+        for index, _ in regexall("\\b${num}\\b",  join(" ",regexall("[0-9]+", row))   ) : {
+          value = tonumber(num)
+          y     = y
+          x     = length(join( "", slice(split("\\s", join("", [for elem in flatten(regexall("([0-9]+|[^0-9]+)", row)): elem == num ? "\\s" : elem ])), 0, index + 1) )) + index * length("${num}")
+        }
+      ]
+    ])) 
+  ])
 
   partNumbers = [for num in local.numbers :
     # it's possible to do a regexall on this whole number level instead of digit level because
@@ -61,6 +55,6 @@ locals {
 
 output "result" {
   description = "sum of all part numbers in the engine schematic"
-
+#  value = local.numbers
   value = try(sum( local.partNumbers ), 0)
 }

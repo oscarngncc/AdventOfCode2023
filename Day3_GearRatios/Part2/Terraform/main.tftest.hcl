@@ -67,7 +67,7 @@ EOT
   assert {
     condition     = output.result == "999*1*10*1+10*1"
     error_message = "should be 10000!"
-  }  
+  }
 }
 
 run "test_case_seven" {
@@ -89,5 +89,5 @@ EOT
   assert {
     condition     = output.result == "467*35+755*598"
     error_message = "should be 467835!"
-  }  
+  }
 }

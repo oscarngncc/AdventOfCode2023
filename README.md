@@ -8,14 +8,14 @@
 
 ## Progress
 
-|      | Part-1 | Sidenote | Part-2 | Sidenote                                                                                                                         |
-|------|--------|----------|--------|----------------------------------------------------------------------------------------------------------------------------------|
-| Day1 |        | /        |        | /                                                                                                                                |
-| Day2 |        | /        |        | /                                                                                                                                |
-| Day3 |        | /        |        | Require copying the result string expression, paste the result to terraform console to evaluate the numerical result.            |
-| Day4 |        | /        |        | Requires terraform apply (not plan) N amount of times based on game. No apply changes once reaching the end                      |
-| Day5 |        |          |        |                                                                                                                                  |
-| Day6 |        |          |        |                                                                                                                                  |
+|      | Part-1 | Sidenote | Part-2 | Sidenote                                                                                                                          |
+|------|--------|----------|--------|-----------------------------------------------------------------------------------------------------------------------------------|
+| Day1 | ✔️      | /        | ✔️      | /                                                                                                                                 |
+| Day2 | ✔️      | /        | ✔️      | /                                                                                                                                 |
+| Day3 | ✔️      | /        | ✔️      | Require copying the result string expression, paste the result to terraform console to evaluate the numerical result.             |
+| Day4 | ✔️      | /        | ✔️      | Requires terraform init, then terraform apply (not plan) N amount of times based on game. No apply changes once reaching the end. |
+| Day5 |        |          |        |                                                                                                                                   |
+| Day6 |        |          |        |                                                                                                                                   |
 
 ## Run:
 

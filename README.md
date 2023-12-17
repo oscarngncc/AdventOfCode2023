@@ -6,15 +6,27 @@
 
 * Terraform Version >=1.6 is required in order to run terraform test
 
+## Progress
+
+|      | Part-1 | Sidenote | Part-2 | Sidenote                                                                                                                         |
+|------|--------|----------|--------|----------------------------------------------------------------------------------------------------------------------------------|
+| Day1 |        | /        |        | /                                                                                                                                |
+| Day2 |        | /        |        | /                                                                                                                                |
+| Day3 |        | /        |        | Require copying the result string expression, paste the result to terraform console to evaluate the numerical result.            |
+| Day4 |        | /        |        | Requires terraform apply (not plan) N amount of times based on game. No apply changes once reaching the end                      |
+| Day5 |        |          |        |                                                                                                                                  |
+| Day6 |        |          |        |                                                                                                                                  |
+
 ## Run:
 
-under the target directory (e.g. `Day1_Terbuchet/Par1/Terraform`), create and drop the input file named `test_input.txt`, then run:
+For most solutions, simply go to the target directory (e.g. `Day1_Terbuchet/Par1/Terraform`), create and drop the input file named `test_input.txt`, then run:
 
 ```
+terraform init
 terraform plan
 ```
 
-which should give you the result. Certain result may require additional steps (e.g. `terraform console` and paste the input to evaluate the expression).
+that should give you the result, unless specified in Side-note
 
 ## Test
 

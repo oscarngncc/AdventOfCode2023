@@ -1,8 +1,4 @@
 
-
-// The following Test cases failed against the solution when it should work
-
-/*
 run "test_case_ninety_nine" {
   command = plan
   variables {
@@ -31,4 +27,3 @@ EOF
     error_message = "should be 30 when going through empty maps"
   }
 }
-*/

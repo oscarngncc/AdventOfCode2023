@@ -8,14 +8,14 @@
 
 ## Progress
 
-|      	| Part-1 	| Sidenote 	| Part-2 	| Sidenote                                                                                                                                                                                                                                   	|
-|------	|--------	|----------	|--------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| Day1 	| ✔️      	| /        	| ✔️      	| /                                                                                                                                                                                                                                          	|
-| Day2 	| ✔️      	| /        	| ✔️      	| /                                                                                                                                                                                                                                          	|
-| Day3 	| ✔️      	| /        	| ✔️      	| Require copying the result string expression, paste the result to terraform console to evaluate the numerical result.                                                                                                                      	|
-| Day4 	| ✔️      	| /        	| ✔️      	| Requires terraform init, then terraform apply (not plan) N amount of times based on game. No apply changes once reaching the end.                                                                                                          	|
-| Day5 	| ✔️      	| /        	| ❗      	| Requres terraform init, then terraform apply (not plan) multiple times. No apply changes once reaching the end. <br> The solution here works for my input but not against an edge case no. 99 (which works in Part-1) in my unit-test. 	|
-| Day6 	|        	|          	|        	|                                                                                                                                                                                                                                            	|
+|      	| Part-1 	| Sidenote 	| Part-2 	| Sidenote                                                                                                              	|
+|------	|--------	|----------	|--------	|-----------------------------------------------------------------------------------------------------------------------	|
+| Day1 	| ✔️      	| /        	| ✔️      	| /                                                                                                                     	|
+| Day2 	| ✔️      	| /        	| ✔️      	| /                                                                                                                     	|
+| Day3 	| ✔️      	| /        	| ✔️      	| Require copying the result string expression, paste the result to terraform console to evaluate the numerical result. 	|
+| Day4 	| ✔️      	| /        	| ✔️      	| Requires terraform init, then terraform apply (not plan) multiple times. No apply changes once reaching the end.      	|
+| Day5 	| ✔️      	| /        	| ✔️      	| Requires terraform init, then terraform apply (not plan) multiple times. No apply changes once reaching the end       	|
+| Day6 	|        	|          	|        	|                                                                                                                       	|
 
 ## Run:
 

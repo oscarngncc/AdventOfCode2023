@@ -36,14 +36,77 @@ locals {
             dest  = tonumber(split(" ", line)[0])
             src   = tonumber(split(" ", line)[1])  
             range = tonumber(split(" ", line)[2])
+            end   = tonumber(split(" ", line)[1]) + tonumber(split(" ", line)[2]) - 1
         } if !strcontains(line, "map") && line != ""
     ]
   ]
 }
 
+module "range_split0" {
+  source   = "./range_split"
+  for_each = local.seedsInfo
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[0]
+}
+
+
+module "range_split1" {
+  source   = "./range_split"
+  for_each = merge(values(module.range_split0)[*].value...)
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[1]
+}
+
+
+module "range_split2" {
+  source   = "./range_split"
+  for_each = merge(values(module.range_split1)[*].value...)
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[2]
+}
+
+module "range_split3" {
+  source   = "./range_split"
+  for_each = merge(values(module.range_split2)[*].value...)
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[3]
+}
+
+module "range_split4" {
+  source   = "./range_split"
+  for_each = merge(values(module.range_split3)[*].value...)
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[4]
+}
+
+module "range_split5" {
+  source   = "./range_split"
+  for_each = merge(values(module.range_split4)[*].value...)
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[5]
+}
+
+module "range_split6" {
+  source   = "./range_split"
+  for_each = merge(values(module.range_split5)[*].value...)
+  head     = each.key
+  tail     = each.value
+  map      = local.mapsInfo[6]
+}
+
+locals {
+  range_split_seed_info = merge(values(module.range_split6)[*].value...)
+}
+
 
 module "full_lookup_head" {
-    for_each = local.seedsInfo
+    for_each = local.range_split_seed_info
     source = "./full_lookup"
     mapsInfo = local.mapsInfo
     seedID = tonumber(each.key)
@@ -51,7 +114,7 @@ module "full_lookup_head" {
 
 
 module "full_lookup_end" {
-    for_each = local.seedsInfo
+    for_each = local.range_split_seed_info
     source = "./full_lookup"
     mapsInfo = local.mapsInfo
     seedID = tonumber(each.value)
@@ -59,11 +122,13 @@ module "full_lookup_end" {
 
 
 locals {
-    // Corrected From a previous incorrect attempt with binary-search, the algo optimizes its search as follows:
-    // [INVALID] If the range is directly proportional (e.g. 100 to 200 seeds maps to 300 to 400 location), we optimize it to exactly seed number 100 only since we care about the lowest location
+    // A binary-search like approach that assumes the following:
+    // If the range is directly proportional (e.g. 100 to 200 seeds maps to 300 to 400 location), we optimize it to exactly seed number 100 only since we care about the lowest location
     // Otherwise, do a middle split and recursively run the equation until head = end
-    rawBinarySplitSeedInfo = merge([ for head,end in local.seedsInfo: 
-        tonumber(module.full_lookup_end[head].result) - tonumber(module.full_lookup_head[head].result) == tonumber(end) - tonumber(head) ? tomap({"${head}" : head}) :  # INVALID OPTIMIZATION HERE
+    //
+    // The above assumption stays true because we didn't just input the seeds info, but all possible splits after traversing the paths
+    rawBinarySplitSeedInfo = merge([ for head,end in local.range_split_seed_info: 
+        tonumber(module.full_lookup_end[head].result) - tonumber(module.full_lookup_head[head].result) == tonumber(end) - tonumber(head) ? tomap({"${head}" : head}) :
         tomap({ "${head}" : tonumber( floor( (tonumber(head) + end) / 2 )), tostring( floor( (tonumber(head) + end) / 2 )  ) : end   })
     ]...)
 
@@ -91,11 +156,11 @@ module "result" {
 
 
 output "minima" {
-  value = local.minima
+value = local.minima
 }
 
 output "current" {
-  value = local.binarySplitSeedInfo
+value = local.binarySplitSeedInfo
 }
 
 

@@ -60,10 +60,10 @@ module "full_lookup_end" {
 
 locals {
     // Corrected From a previous incorrect attempt with binary-search, the algo optimizes its search as follows:
-    // If the range is directly proportional (e.g. 100 to 200 seeds maps to 300 to 400 location), we optimize it to exactly seed number 100 only since we care about the lowest location
+    // [INVALID] If the range is directly proportional (e.g. 100 to 200 seeds maps to 300 to 400 location), we optimize it to exactly seed number 100 only since we care about the lowest location
     // Otherwise, do a middle split and recursively run the equation until head = end
     rawBinarySplitSeedInfo = merge([ for head,end in local.seedsInfo: 
-        tonumber(module.full_lookup_end[head].result) - tonumber(module.full_lookup_head[head].result) == tonumber(end) - tonumber(head) ? tomap({"${head}" : head}) : 
+        tonumber(module.full_lookup_end[head].result) - tonumber(module.full_lookup_head[head].result) == tonumber(end) - tonumber(head) ? tomap({"${head}" : head}) :  # INVALID OPTIMIZATION HERE
         tomap({ "${head}" : tonumber( floor( (tonumber(head) + end) / 2 )), tostring( floor( (tonumber(head) + end) / 2 )  ) : end   })
     ]...)
 
@@ -101,5 +101,4 @@ output "current" {
 
 output "result" {
   value = try(min([ for item in values(module.result): tonumber(item.result) ]...), "cannot obtain result yet")
-  //99751240
 }

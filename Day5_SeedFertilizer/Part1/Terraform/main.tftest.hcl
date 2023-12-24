@@ -71,3 +71,33 @@ EOF
     error_message = "should be 35 as the example suggest!"
   }
 }
+
+
+run "test_case_ninety_nine" {
+  command = plan
+  variables {
+    input = <<EOF
+seeds: 90 91 92 93 94 95 96 97 98 99 100
+
+seed-to-soil map:
+
+soil-to-fertilizer map:
+
+fertilizer-to-water map:
+
+water-to-light map:
+
+light-to-temperature map:
+
+temperature-to-humidity map:
+
+humidity-to-location map:
+30 91 5
+
+EOF
+  }
+  assert {
+    condition     = output.result == 30
+    error_message = "should be 30 when going through empty maps"
+  }
+}

@@ -8,14 +8,20 @@
 
 ## Progress
 
-|      	| Part-1 	| Sidenote 	| Part-2 	| Sidenote                                                                                                              	|
-|------	|--------	|----------	|--------	|-----------------------------------------------------------------------------------------------------------------------	|
-| Day1 	| ✔️      	| /        	| ✔️      	| /                                                                                                                     	|
-| Day2 	| ✔️      	| /        	| ✔️      	| /                                                                                                                     	|
-| Day3 	| ✔️      	| /        	| ✔️      	| Require copying the result string expression, paste the result to terraform console to evaluate the numerical result. 	|
-| Day4 	| ✔️      	| /        	| ✔️      	| Requires terraform init, then terraform apply (not plan) multiple times. No apply changes once reaching the end.      	|
-| Day5 	| ✔️      	| /        	| ✔️      	| Requires terraform init, then terraform apply (not plan) multiple times. No apply changes once reaching the end       	|
-| Day6 	|        	|          	|        	|                                                                                                                       	|
+|      	| Part-1 	| Sidenote 	| Part-2 	| Sidenote 	|
+|------	|--------	|----------	|--------	|----------	|
+| Day1 	| ✔️      	| /        	| ✔️      	| /        	|
+| Day2 	| ✔️      	| /        	| ✔️      	| /        	|
+| Day3 	| ✔️      	| /        	| ✔️      	| 📚        	|
+| Day4 	| ✔️      	| /        	| ✔️      	| ♾️        	|
+| Day5 	| ✔️      	| /        	| ✔️      	| ♾️        	|
+| Day6 	| ✔️      	| 📚        	|        	|          	|
+
+
+The following symbols in side note means the following:
+
+* 📚 Requires copying the result string expression and paste it to `terraform console`
+* ♾️ Requires `terraform init`, then `terraform apply` (not plan) multiple times. No applied changes once reaching the end.
 
 ## Run:
 

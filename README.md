@@ -16,7 +16,8 @@
 | Day4 | ✔️      | /        | ✔️      | ♾️        |
 | Day5 | ✔️      | /        | ✔️      | ♾️        |
 | Day6 | ✔️      | 📚        | ✔️      | ♾️        |
-| Day7 | ✔️      | /        |        |          |
+| Day7 | ✔️      | /        | ✔️      | /        |
+| Day8 |        |          |        |          |
 
 
 The following symbols in side note means the following:
